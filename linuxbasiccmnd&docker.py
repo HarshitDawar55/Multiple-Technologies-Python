@@ -1,11 +1,8 @@
 import os
 
-print("""
-\n
-Press 1: For basic Linux commands
-Press 2: For Configuring Docker on linux
-""")
-channel = input("Enter your Choice: ")
+print("Press 1: To Run Command Locally\nPress 2: To run Command Remotely")
+
+choice = input("Enter your Choice: ")
 while True:
     def linxcmnd():
         if int(channel) == 1:
