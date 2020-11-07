@@ -29,7 +29,21 @@ def SpecificCommands():
     elif ch == 2:
         print(os.system("cal"))
     elif ch == 3:
-        name, path = input("Enter the directory name and path where the directory has to be created(space seperated)").split()
+        path = input("Enter the path where the directory has to be created!\n")
+        os.system("mkdir -p {}".format(path))
+    elif ch == 4:
+        path = input("Enter the path with file name where the file has to be created!\n")
+        os.system("touch {}".format(path))
+    elif ch == 5:
+        path = input("Enter the path of the file!\n")
+        data = input("Enter the data to be inserted!\n")
+        fileObject = open("{}".format(path), "a+")
+        fileObject.writelines(data)
+    elif ch == 6:
+        initialPath, FinalPath = input("Enter the file path where the file is present & the path where it has to be moved(space separated)!\n").split()
+        os.system("mv {} {}".format(initialPath, FinalPath))
+    elif ch == 7:
+        print(os.system("cat /etc/os-release"))
 
 
 while True:
@@ -48,8 +62,10 @@ while True:
                 print(Exception)
 
         if ch == 2:
-
-
+            try:
+                SpecificCommands()
+            except Exception:
+                print(Exception)
 
     elif choice == 3:
         sys.exit(1)
