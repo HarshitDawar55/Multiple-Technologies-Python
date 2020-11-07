@@ -1,10 +1,31 @@
 import os
+import sys
 
-print("Press 1: To Run Command Locally\nPress 2: To run Command Remotely")
 
-choice = input("Enter your Choice: ")
+def RunCommand(cmd):
+    print(os.system(cmd))
+
+
 while True:
-    def linxcmnd():
+    print("Press 1: To Run Command Locally!\nPress 2: To run Command Remotely!\n Press 3 To exit from the Program!\n")
+    choice = int(input())
+
+    if choice == 1:
+        print("Press 1 to run any command!\nPress 2 to run the commands present in the software!\n")
+        ch = int(input())
+        if ch == 1:
+            try:
+                cmd = input("Enter the Command!")
+                RunCommand(cmd)
+            except Exception:
+                print(Exception)
+
+    elif choice == 3:
+        sys.exit(1)
+    else:
+        print("Wrong Option!")
+
+    '''def linxcmnd():
         if int(channel) == 1:
             os.system("clear")
             print("			Linux Commands			")
@@ -61,7 +82,7 @@ while True:
             elif int(x) == 0:
                 os.system("exit")
 
-        linxcmnd()
+        linxcmnd()'''
 
 
     def docker():
