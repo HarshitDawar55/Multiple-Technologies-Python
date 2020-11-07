@@ -5,6 +5,7 @@ import sys
 def RunCommand(cmd):
     print(os.system(cmd))
 
+
 def SpecificCommands():
     print("""Functionalities supported by this software are listed below:\n
            Press 1 to check Date\n
@@ -40,7 +41,8 @@ def SpecificCommands():
         fileObject = open("{}".format(path), "a+")
         fileObject.writelines(data)
     elif ch == 6:
-        initialPath, FinalPath = input("Enter the file path where the file is present & the path where it has to be moved(space separated)!\n").split()
+        initialPath, FinalPath = input(
+            "Enter the file path where the file is present & the path where it has to be moved(space separated)!\n").split()
         os.system("mv {} {}".format(initialPath, FinalPath))
     elif ch == 7:
         print(os.system("cat /etc/os-release"))
