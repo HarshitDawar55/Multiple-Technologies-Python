@@ -6,6 +6,16 @@ def RunCommand(cmd):
     print(os.system(cmd))
 
 
+def configure_docker():
+    os.system("cd /etc/yum.repos.d")
+    file_object = open("docker.repo", "w+")
+    configs = ["name=Docker Configuration Repository", "baseurl=https://dl.fedoraproject.org/pub/epel/7/x86_64/", "gpgcheck=0"]
+    file_object.writelines(configs)
+    os.system("yum clean all")
+    os.system("dnf install -y docker-ce --nobest")
+    os.system("systemctl start docker --now")
+
+
 def SpecificCommands():
     print("""Functionality supported by this software are listed below:
     Press 1 to check Date
@@ -22,7 +32,9 @@ def SpecificCommands():
     Press 12 to add a user in the system
     Press 13 to remove a user
     Press 14 to list the mounted partitions
-    Press 15 to list all the block partitions""")
+    Press 15 to list all the block partitions
+    Press 16 to configure Docker""")
+
     ch = int(input())
 
     if ch == 1:
@@ -74,6 +86,12 @@ def SpecificCommands():
         os.system("df -h")
     elif ch == 15:
         os.system("lsblk")
+    elif ch == 16:
+        configure_docker()
+    else:
+        print("Wrong Input! Exiting!!!")
+        sys.exit(0)
+
 
 print(""""//////////////////////////////Important Note: This program is best supported on OS based on CentOS//////////////////////////""")
 while True:
