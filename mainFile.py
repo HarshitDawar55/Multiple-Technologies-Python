@@ -1,5 +1,7 @@
 import os
 import sys
+import getpass
+
 
 
 def print_success():
@@ -28,7 +30,7 @@ def install_docker():
 
 
 def SpecificCommands():
-    print("""Functionality supported by this software are listed below:
+    print(""" 
     Press 1 to check Date
     Press 2 to check Calender
     Press 3 to create a Directory
@@ -46,7 +48,7 @@ def SpecificCommands():
     Press 15 to list all the block partitions
     """)
 
-    ch = int(input())
+    ch = int(input("ENTER YOUR CHOICE : "))
 
     if ch == 1:
         print(os.system("date"))
@@ -117,47 +119,64 @@ def SpecificCommands():
         print("Wrong Input! Exiting!!!")
         sys.exit(0)
 
+def mainfx():
+    os.system("figlet -ck Welcome")
+    print(
+        """"//////////////////////////////Important Note: This program is best supported on Centos/Redhat/fedora//////////////////////////""")
+    while True:
+        print(" Press 1: To Run Locally!\n Press 2: To Run Remotely!\n Press 3: To Exit\n")
+        choice = int(input("ENTER YOUR CHOICE : "))
 
-print(
-    """"//////////////////////////////Important Note: This program is best supported on OS based on CentOS//////////////////////////""")
-while True:
-    print(" Press 1: To Run Command Locally!\n Press 2: To run Command Remotely!\n Press 3 To exit from the Program!\n")
-    choice = int(input())
+        if choice == 1:
+            print("Press 1 to run any command!\nPress 2 to run the basic Linux Commands supported by this software!")
+            print("Press 3 to configure Docker!\nPress 4 to install Docker!\n")
+            ch = int(input())
+            if ch == 1:
+                try:
+                    cmd = input("Enter the Command!")
+                    RunCommand(cmd)
+                except Exception:
+                    print(Exception)
 
-    if choice == 1:
-        print("Press 1 to run any command!\nPress 2 to run the basic Linux Commands supported by this software!")
-        print("Press 3 to configure Docker!\nPress 4 to install Docker!\n")
-        ch = int(input())
-        if ch == 1:
-            try:
-                cmd = input("Enter the Command!")
-                RunCommand(cmd)
-            except Exception:
-                print(Exception)
+            elif ch == 2:
+                try:
+                    SpecificCommands()
+                except Exception:
+                    print(Exception)
 
-        elif ch == 2:
-            try:
-                SpecificCommands()
-            except Exception:
-                print(Exception)
+            elif ch == 3:
+                try:
+                    configure_docker()
+                except Exception:
+                    print(Exception)
 
-        elif ch == 3:
-            try:
-                configure_docker()
-            except Exception:
-                print(Exception)
+            elif ch == 4:
+                try:
+                    install_docker()
+                except Exception:
+                    print(Exception)
 
-        elif ch == 4:
-            try:
-                install_docker()
-            except Exception:
-                print(Exception)
+            else:
+                print("Wrong Output! Exiting!!!")
+                sys.exit(0)
 
+        elif choice == 3:
+            sys.exit(1)
         else:
-            print("Wrong Output! Exiting!!!")
-            sys.exit(0)
+            print("Wrong Option!")
+i = 1
+while i<=2:
+	password = getpass.getpass("Enter the password : ")
+	passwd = "project"
 
-    elif choice == 3:
-        sys.exit(1)
-    else:
-        print("Wrong Option!")
+	if passwd == password:
+		os.system("clear")		
+		mainfx()
+	if passwd != password:
+		print("The provided password is incorrect")
+		if i<=1:	  
+			print("Try again")
+		i+=1
+		while i>=4:
+			print("Too many incorrect attempts")
+			exit()
