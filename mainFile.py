@@ -30,28 +30,29 @@ def install_docker():
 
 
 def SpecificCommands():
-    print(""" 
-    Press 1 to check Date
-    Press 2 to check Calender
-    Press 3 to create a Directory
-    Press 4 to create a File
-    Press 5 to Enter Data into a file
-    Press 6 to move a file
-    Press 7 to check the OS Details
-    Press 8 to check the IP of the System
-    Press 9 to list the contents of a directory
-    Press 10 to see the content of a file
-    Press 11 to ping to a website
-    Press 12 to add a user in the system
-    Press 13 to remove a user
-    Press 14 to list the mounted partitions
-    Press 15 to list all the block partitions
+    print("""Which Service You Want To Use? 
+    Press 1: to Check Date
+    Press 2: to check Calender
+    Press 3: to create a Directory
+    Press 4: to create a File
+    Press 5: to Enter Data into a file
+    Press 6: to move a file
+    Press 7: to check the OS Details
+    Press 8: to check the IP of the System
+    Press 9: to list the contents of a directory
+    Press 10: to see the content of a file
+    Press 11: to ping to a website
+    Press 12: to add a user in the system
+    Press 13: to remove a user
+    Press 14: to list the mounted partitions
+    Press 15: to list all the block partitions
     """)
 
     ch = int(input("ENTER YOUR CHOICE : "))
 
     if ch == 1:
-        print(os.system("date"))
+	os.system("clear")
+        print(os.system("date +%D"))
         print_success()
     elif ch == 2:
         print(os.system("cal"))
